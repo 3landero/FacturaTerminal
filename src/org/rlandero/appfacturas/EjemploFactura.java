@@ -16,33 +16,30 @@ public class EjemploFactura {
         Factura factura = new Factura(descripcion, cliente);
 
         Producto producto;
-        String nombre;
-        float precio;
-        int cantidad;
+        //String nombre;
+        //float precio;
+        //int cantidad;
 
         System.out.println();
 
         for (int i = 0; i <5; i++) {
             producto = new Producto();
-            System.out.print("Ingrese producto num : " + producto.getCodigo() + ": ");
-            nombre = scanner.next();
-            producto.setNombre(nombre);
+            System.out.println("Ingrese producto num " + producto.getCodigo() + ": ");
+            producto.setNombre(scanner.nextLine());
 
             System.out.print("Ingrese el precio del producto : ");
-            precio = scanner.nextFloat();
-            producto.setPrecio(precio);
+            producto.setPrecio(scanner.nextFloat());
 
             System.out.print("Ingrese las unidades del producto : ");
-            cantidad = scanner.nextInt();
-            ItemFactura item = new ItemFactura(cantidad,producto);
-            factura.addItemFactura(item);
-
-            System.out.println();
-
-
+            factura.addItemFactura(new ItemFactura(scanner.nextInt(),producto));
+            System.out.println("------------------");
+            scanner.nextLine();
 
         }
-        System.out.println(factura.generarDetalle());
+        System.out.println("=== Factura ==============");
+        System.out.println(factura);
         System.out.println("----------------");
+
+
     }
 }
